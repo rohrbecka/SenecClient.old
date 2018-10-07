@@ -14,6 +14,18 @@
 		7C69909E2169530B0081D173 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7C69909C2169530B0081D173 /* README.md */; };
 		7C6990A12169536B0081D173 /* lala_statistic_energy_example1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C6990A02169536B0081D173 /* lala_statistic_energy_example1.json */; };
 		7C6990A32169539F0081D173 /* lala_statistic_features_example1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C6990A22169539F0081D173 /* lala_statistic_features_example1.json */; };
+		7C6990A52169551F0081D173 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7C6990A42169551F0081D173 /* README.md */; };
+		7C6990A7216957130081D173 /* conversion.js in Resources */ = {isa = PBXBuildFile; fileRef = 7C6990A6216957130081D173 /* conversion.js */; };
+		7C6990A921695A5E0081D173 /* lala_sockets_example1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C6990A821695A5E0081D173 /* lala_sockets_example1.json */; };
+		7C6990AB21695AC90081D173 /* lala_energy_info.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C6990AA21695AC90081D173 /* lala_energy_info.json */; };
+		7C6990AD21695B040081D173 /* lala_power_example1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C6990AC21695B040081D173 /* lala_power_example1.json */; };
+		7C6990AF21695B6C0081D173 /* lala_battery_info_example1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C6990AE21695B6C0081D173 /* lala_battery_info_example1.json */; };
+		7C6990B121695BCB0081D173 /* Senec_Information.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C6990B021695BCB0081D173 /* Senec_Information.png */; };
+		7C6990B321695BF10081D173 /* Senec_Sockets.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C6990B221695BF10081D173 /* Senec_Sockets.png */; };
+		7C6990B5216964F60081D173 /* Senec_HTTP_header.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C6990B4216964F60081D173 /* Senec_HTTP_header.png */; };
+		7C6990B82169F7170081D173 /* SenecValuePrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6990B72169F7170081D173 /* SenecValuePrefix.swift */; };
+		7C6990BA2169FE5A0081D173 /* SenecValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6990B92169FE5A0081D173 /* SenecValueTests.swift */; };
+		7C6990BC2169FF370081D173 /* SenecValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6990BB2169FF370081D173 /* SenecValue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +49,19 @@
 		7C69909C2169530B0081D173 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7C6990A02169536B0081D173 /* lala_statistic_energy_example1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = lala_statistic_energy_example1.json; sourceTree = "<group>"; };
 		7C6990A22169539F0081D173 /* lala_statistic_features_example1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = lala_statistic_features_example1.json; sourceTree = "<group>"; };
+		7C6990A42169551F0081D173 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		7C6990A6216957130081D173 /* conversion.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = conversion.js; sourceTree = "<group>"; };
+		7C6990A821695A5E0081D173 /* lala_sockets_example1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = lala_sockets_example1.json; sourceTree = "<group>"; };
+		7C6990AA21695AC90081D173 /* lala_energy_info.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = lala_energy_info.json; sourceTree = "<group>"; };
+		7C6990AC21695B040081D173 /* lala_power_example1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = lala_power_example1.json; sourceTree = "<group>"; };
+		7C6990AE21695B6C0081D173 /* lala_battery_info_example1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = lala_battery_info_example1.json; sourceTree = "<group>"; };
+		7C6990B021695BCB0081D173 /* Senec_Information.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Senec_Information.png; sourceTree = "<group>"; };
+		7C6990B221695BF10081D173 /* Senec_Sockets.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Senec_Sockets.png; sourceTree = "<group>"; };
+		7C6990B4216964F60081D173 /* Senec_HTTP_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Senec_HTTP_header.png; sourceTree = "<group>"; };
+		7C6990B62169DBBA0081D173 /* ValueConversion.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ValueConversion.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		7C6990B72169F7170081D173 /* SenecValuePrefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecValuePrefix.swift; sourceTree = "<group>"; };
+		7C6990B92169FE5A0081D173 /* SenecValueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecValueTests.swift; sourceTree = "<group>"; };
+		7C6990BB2169FF370081D173 /* SenecValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecValue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +108,8 @@
 			children = (
 				7C6990842169526C0081D173 /* SenecClient.h */,
 				7C6990852169526C0081D173 /* Info.plist */,
+				7C6990B72169F7170081D173 /* SenecValuePrefix.swift */,
+				7C6990BB2169FF370081D173 /* SenecValue.swift */,
 			);
 			path = SenecClient;
 			sourceTree = "<group>";
@@ -93,6 +120,7 @@
 				7C69909F2169532B0081D173 /* SenecWebserviceExamples */,
 				7C69908F2169526C0081D173 /* SenecClientTests.swift */,
 				7C6990912169526C0081D173 /* Info.plist */,
+				7C6990B92169FE5A0081D173 /* SenecValueTests.swift */,
 			);
 			path = SenecClientTests;
 			sourceTree = "<group>";
@@ -100,8 +128,18 @@
 		7C69909F2169532B0081D173 /* SenecWebserviceExamples */ = {
 			isa = PBXGroup;
 			children = (
+				7C6990B62169DBBA0081D173 /* ValueConversion.playground */,
 				7C6990A02169536B0081D173 /* lala_statistic_energy_example1.json */,
 				7C6990A22169539F0081D173 /* lala_statistic_features_example1.json */,
+				7C6990A42169551F0081D173 /* README.md */,
+				7C6990A6216957130081D173 /* conversion.js */,
+				7C6990B221695BF10081D173 /* Senec_Sockets.png */,
+				7C6990A821695A5E0081D173 /* lala_sockets_example1.json */,
+				7C6990B021695BCB0081D173 /* Senec_Information.png */,
+				7C6990AA21695AC90081D173 /* lala_energy_info.json */,
+				7C6990AC21695B040081D173 /* lala_power_example1.json */,
+				7C6990AE21695B6C0081D173 /* lala_battery_info_example1.json */,
+				7C6990B4216964F60081D173 /* Senec_HTTP_header.png */,
 			);
 			path = SenecWebserviceExamples;
 			sourceTree = "<group>";
@@ -167,6 +205,7 @@
 				TargetAttributes = {
 					7C6990802169526C0081D173 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 					7C6990892169526C0081D173 = {
 						CreatedOnToolsVersion = 10.0;
@@ -205,8 +244,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C6990A52169551F0081D173 /* README.md in Resources */,
+				7C6990B5216964F60081D173 /* Senec_HTTP_header.png in Resources */,
+				7C6990B321695BF10081D173 /* Senec_Sockets.png in Resources */,
 				7C6990A32169539F0081D173 /* lala_statistic_features_example1.json in Resources */,
+				7C6990AF21695B6C0081D173 /* lala_battery_info_example1.json in Resources */,
+				7C6990AD21695B040081D173 /* lala_power_example1.json in Resources */,
+				7C6990A921695A5E0081D173 /* lala_sockets_example1.json in Resources */,
+				7C6990A7216957130081D173 /* conversion.js in Resources */,
 				7C6990A12169536B0081D173 /* lala_statistic_energy_example1.json in Resources */,
+				7C6990AB21695AC90081D173 /* lala_energy_info.json in Resources */,
+				7C6990B121695BCB0081D173 /* Senec_Information.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +265,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C6990BC2169FF370081D173 /* SenecValue.swift in Sources */,
+				7C6990B82169F7170081D173 /* SenecValuePrefix.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C6990BA2169FE5A0081D173 /* SenecValueTests.swift in Sources */,
 				7C6990902169526C0081D173 /* SenecClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,6 +414,7 @@
 		7C6990962169526C0081D173 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -382,6 +434,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.rohrbeck-online.SenecClient";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -389,6 +442,7 @@
 		7C6990972169526C0081D173 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -415,6 +469,7 @@
 		7C6990992169526C0081D173 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Q3R5JZHM29;
@@ -433,6 +488,7 @@
 		7C69909A2169526C0081D173 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Q3R5JZHM29;
