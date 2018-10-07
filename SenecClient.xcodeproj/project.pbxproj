@@ -23,7 +23,7 @@
 		7C6990B121695BCB0081D173 /* Senec_Information.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C6990B021695BCB0081D173 /* Senec_Information.png */; };
 		7C6990B321695BF10081D173 /* Senec_Sockets.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C6990B221695BF10081D173 /* Senec_Sockets.png */; };
 		7C6990B5216964F60081D173 /* Senec_HTTP_header.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C6990B4216964F60081D173 /* Senec_HTTP_header.png */; };
-		7C6990B82169F7170081D173 /* SenecValuePrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6990B72169F7170081D173 /* SenecValuePrefix.swift */; };
+		7C6990B82169F7170081D173 /* SenecValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6990B72169F7170081D173 /* SenecValueType.swift */; };
 		7C6990BA2169FE5A0081D173 /* SenecValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6990B92169FE5A0081D173 /* SenecValueTests.swift */; };
 		7C6990BC2169FF370081D173 /* SenecValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6990BB2169FF370081D173 /* SenecValue.swift */; };
 /* End PBXBuildFile section */
@@ -59,7 +59,7 @@
 		7C6990B221695BF10081D173 /* Senec_Sockets.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Senec_Sockets.png; sourceTree = "<group>"; };
 		7C6990B4216964F60081D173 /* Senec_HTTP_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Senec_HTTP_header.png; sourceTree = "<group>"; };
 		7C6990B62169DBBA0081D173 /* ValueConversion.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ValueConversion.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		7C6990B72169F7170081D173 /* SenecValuePrefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecValuePrefix.swift; sourceTree = "<group>"; };
+		7C6990B72169F7170081D173 /* SenecValueType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecValueType.swift; sourceTree = "<group>"; };
 		7C6990B92169FE5A0081D173 /* SenecValueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecValueTests.swift; sourceTree = "<group>"; };
 		7C6990BB2169FF370081D173 /* SenecValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecValue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,7 +108,7 @@
 			children = (
 				7C6990842169526C0081D173 /* SenecClient.h */,
 				7C6990852169526C0081D173 /* Info.plist */,
-				7C6990B72169F7170081D173 /* SenecValuePrefix.swift */,
+				7C6990B72169F7170081D173 /* SenecValueType.swift */,
 				7C6990BB2169FF370081D173 /* SenecValue.swift */,
 			);
 			path = SenecClient;
@@ -266,7 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C6990BC2169FF370081D173 /* SenecValue.swift in Sources */,
-				7C6990B82169F7170081D173 /* SenecValuePrefix.swift in Sources */,
+				7C6990B82169F7170081D173 /* SenecValueType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
