@@ -74,21 +74,85 @@ internal enum SenecValue: Equatable {
 
 
 
-    /// Returns the `Double` value represented by this `SenecValue`.
-    internal var double: Double? {
+    /// Returns the `Double` value represented by this `SenecValue`, converted as necessary.
+    internal var doubleValue: Double? {
         switch self {
         case .float(let value):
-            return value;
+            return value
+        case .uint8(let value):
+            return Double(value)
+        case .uint16(let value):
+            return Double(value)
+        case .uint32(let value):
+            return Double(value)
+        case .uint64(let value):
+            return Double(value)
+        case .int8(let value):
+            return Double(value)
+        case .int16(let value):
+            return Double(value)
+        case .int32(let value):
+            return Double(value)
+        case .int64(let value):
+            return Double(value)
         default:
             return nil
         }
     }
 
 
-    internal var int: Int? {
+    internal var intValue: Int? {
         switch self {
+        case .float(let value):
+            return Int(value.rounded())
         case .uint8(let value):
             return Int(value)
+        case .uint16(let value):
+            return Int(value)
+        case .uint32(let value):
+            return Int(value)
+        case .uint64(let value):
+            return Int(value)   // TODO: here a problem may occur!
+        case .int8(let value):
+            return Int(value)
+        case .int16(let value):
+            return Int(value)
+        case .int32(let value):
+            return Int(value)
+        case .int64(let value):
+            return Int(value)
+        default:
+            return nil
+        }
+    }
+
+
+
+    internal var uintValue: UInt? {
+        switch self {
+        case .float(let value):
+            if value < 0 { return nil }
+            return UInt(value.rounded())
+        case .uint8(let value):
+            return UInt(value)
+        case .uint16(let value):
+            return UInt(value)
+        case .uint32(let value):
+            return UInt(value)
+        case .uint64(let value):
+            return UInt(value)
+        case .int8(let value):
+            if value < 0 { return nil }
+            return UInt(value)
+        case .int16(let value):
+            if value < 0 { return nil }
+            return UInt(value)
+        case .int32(let value):
+            if value < 0 { return nil }
+            return UInt(value)
+        case .int64(let value):
+            if value < 0 { return nil }
+            return UInt(value)
         default:
             return nil
         }

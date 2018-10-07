@@ -62,7 +62,52 @@ class SenecValueTests: XCTestCase {
 
 
     // MARK: - Test retreival of wrapped value.
-    
+    func test_doubleValue_returnsCorrectValue (){
+        XCTAssertEqual(SenecValue.float(1.2345).doubleValue!, 1.2345, accuracy: 0.00001)
+        XCTAssertEqual(SenecValue.uint8(15).doubleValue!, 15.0, accuracy: 0.00001)
+        XCTAssertEqual(SenecValue.uint16(12345).doubleValue!, 12345.0, accuracy: 0.00001)
+        XCTAssertEqual(SenecValue.uint32(1_000_000).doubleValue!, 1_000_000, accuracy: 0.00001)
+        XCTAssertEqual(SenecValue.uint64(1_000_000_000).doubleValue!, 1_000_000_000, accuracy: 0.1)
+        XCTAssertEqual(SenecValue.int8(-15).doubleValue!, -15.0, accuracy: 0.00001)
+        XCTAssertEqual(SenecValue.int16(-12345).doubleValue!, -12345.0, accuracy: 0.00001)
+        XCTAssertEqual(SenecValue.int32(-1_000_000).doubleValue!, -1_000_000, accuracy: 0.00001)
+        XCTAssertEqual(SenecValue.int64(-1_000_000_000).doubleValue!, -1_000_000_000, accuracy: 0.1)
+    }
+
+
+
+    func test_intValue_returnsCorrectValue (){
+        XCTAssertEqual(SenecValue.float(1.2345).intValue!, 1)
+        XCTAssertEqual(SenecValue.float(1.5432).intValue!, 2)
+        XCTAssertEqual(SenecValue.float(-1.2345).intValue!, -1)
+        XCTAssertEqual(SenecValue.float(-1.5345).intValue!, -2)
+        XCTAssertEqual(SenecValue.uint8(15).intValue!, 15)
+        XCTAssertEqual(SenecValue.uint16(12345).intValue!, 12345)
+        XCTAssertEqual(SenecValue.uint32(1_000_000).intValue!, 1_000_000)
+        XCTAssertEqual(SenecValue.uint64(1_000_000_000).intValue!, 1_000_000_000)
+        XCTAssertEqual(SenecValue.int8(-15).intValue!, -15)
+        XCTAssertEqual(SenecValue.int16(-12345).intValue!, -12345)
+        XCTAssertEqual(SenecValue.int32(-1_000_000).intValue!, -1_000_000)
+        XCTAssertEqual(SenecValue.int64(-1_000_000_000).intValue!, -1_000_000_000)
+    }
+
+
+
+    func test_uintValue_returnsCorrectValue (){
+        XCTAssertEqual(SenecValue.float(1.2345).uintValue!, 1)
+        XCTAssertEqual(SenecValue.float(1.5432).uintValue!, 2)
+        XCTAssertEqual(SenecValue.float(-1.2345).uintValue, Optional<UInt>.none)
+        XCTAssertEqual(SenecValue.float(-1.5345).uintValue, Optional<UInt>.none)
+        XCTAssertEqual(SenecValue.uint8(15).uintValue!, 15)
+        XCTAssertEqual(SenecValue.uint16(12345).uintValue!, 12345)
+        XCTAssertEqual(SenecValue.uint32(1_000_000).uintValue!, 1_000_000)
+        XCTAssertEqual(SenecValue.uint64(1_000_000_000).uintValue!, 1_000_000_000)
+        XCTAssertEqual(SenecValue.int8(-15).uintValue, Optional<UInt>.none)
+        XCTAssertEqual(SenecValue.int16(-12345).uintValue, Optional<UInt>.none)
+        XCTAssertEqual(SenecValue.int32(-1_000_000).uintValue, Optional<UInt>.none)
+        XCTAssertEqual(SenecValue.int64(-1_000_000_000).uintValue, Optional<UInt>.none)
+    }
+
 
 
     // MARK: - Helper functions
