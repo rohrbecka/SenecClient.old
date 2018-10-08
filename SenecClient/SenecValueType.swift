@@ -38,9 +38,9 @@ internal enum SenecValueType: String, CaseIterable {
 
 
 
-    init? (of string: String) {
+    public init? (of string: String) {
         let allCases = SenecValueType.allCases
-        let foundCases = allCases.filter{ string.hasPrefix($0.rawValue) }
+        let foundCases = allCases.filter { string.hasPrefix($0.rawValue) }
         guard let foundCase = foundCases.first else {
             return nil
         }

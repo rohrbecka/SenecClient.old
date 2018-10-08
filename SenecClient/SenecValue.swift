@@ -162,7 +162,7 @@ internal enum SenecValue: Equatable {
 
 
 /// Converts a hexadecimal `string` representation into a Double value.
-fileprivate func hexToFloat(_ string: String) -> Double? {
+private func hexToFloat(_ string: String) -> Double? {
     guard let intValue = Int(string, radix: 16) else {
         return nil
     }

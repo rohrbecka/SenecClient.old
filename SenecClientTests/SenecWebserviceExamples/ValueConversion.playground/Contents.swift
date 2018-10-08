@@ -1,13 +1,13 @@
 import Cocoa
 
+let floatString = "fl_40B2E822"
 
 
+let value: Int8 = -1
+let nsnumber = NSNumber(value: value)
+let out = nsnumber.uintValue
 
-
-let floatString = "fl_40B2E822";
-
-
-
+let out2 = UInt8(value)
 
 
 // Conversion of float into a value
@@ -25,5 +25,3 @@ let sign = intValue & 0x8000_0000 != 0 ? -1.0 : 1.0
 let exponent = Double( ((intValue >> 23) & 0xff) - 127 )
 let mantissa = 1 + (Double (intValue & 0x7f_ffff) / Double (0x7f_ffff))
 let floatValue = sign * mantissa * pow(2.0, exponent)
-
-

@@ -39,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C5C472C216BFE12004E9EA7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		7C5C472D216BFE4F004E9EA7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		7C6990812169526C0081D173 /* SenecClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SenecClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C6990842169526C0081D173 /* SenecClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SenecClient.h; sourceTree = "<group>"; };
 		7C6990852169526C0081D173 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 		7C6990772169526C0081D173 = {
 			isa = PBXGroup;
 			children = (
+				7C5C472C216BFE12004E9EA7 /* .swiftlint.yml */,
 				7C69909B2169530B0081D173 /* LICENSE */,
 				7C69909C2169530B0081D173 /* README.md */,
 				7C6990832169526C0081D173 /* SenecClient */,
@@ -117,6 +120,7 @@
 		7C69908E2169526C0081D173 /* SenecClientTests */ = {
 			isa = PBXGroup;
 			children = (
+				7C5C472D216BFE4F004E9EA7 /* .swiftlint.yml */,
 				7C69909F2169532B0081D173 /* SenecWebserviceExamples */,
 				7C69908F2169526C0081D173 /* SenecClientTests.swift */,
 				7C6990912169526C0081D173 /* Info.plist */,
@@ -166,6 +170,7 @@
 				7C69907D2169526C0081D173 /* Sources */,
 				7C69907E2169526C0081D173 /* Frameworks */,
 				7C69907F2169526C0081D173 /* Resources */,
+				7C5C472B216BFDEE004E9EA7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -259,6 +264,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7C5C472B216BFDEE004E9EA7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7C69907D2169526C0081D173 /* Sources */ = {

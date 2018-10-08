@@ -18,15 +18,15 @@ class SenecValueTests: XCTestCase {
 
     // MARK: - Constructor Tests
     func test_SenecValue_DefaultConstructor() {
-        let _ = SenecValue.float(1.2345)
-        let _ = SenecValue.uint8(128)
-        let _ = SenecValue.uint16(32678)
-        let _ = SenecValue.uint32(100000000)
-        let _ = SenecValue.uint64(1000000000000)
-        let _ = SenecValue.int8(-127)
-        let _ = SenecValue.int16(-32677)
-        let _ = SenecValue.int32(-100000000)
-        let _ = SenecValue.int64(-1000000000000)
+        _ = SenecValue.float(1.2345)
+        _ = SenecValue.uint8(128)
+        _ = SenecValue.uint16(32678)
+        _ = SenecValue.uint32(100000000)
+        _ = SenecValue.uint64(1000000000000)
+        _ = SenecValue.int8(-127)
+        _ = SenecValue.int16(-32677)
+        _ = SenecValue.int32(-100000000)
+        _ = SenecValue.int64(-1000000000000)
     }
 
 
@@ -62,7 +62,7 @@ class SenecValueTests: XCTestCase {
 
 
     // MARK: - Test retreival of wrapped value.
-    func test_doubleValue_returnsCorrectValue (){
+    func test_doubleValue_returnsCorrectValue () {
         XCTAssertEqual(SenecValue.float(1.2345).doubleValue!, 1.2345, accuracy: 0.00001)
         XCTAssertEqual(SenecValue.uint8(15).doubleValue!, 15.0, accuracy: 0.00001)
         XCTAssertEqual(SenecValue.uint16(12345).doubleValue!, 12345.0, accuracy: 0.00001)
@@ -76,7 +76,7 @@ class SenecValueTests: XCTestCase {
 
 
 
-    func test_intValue_returnsCorrectValue (){
+    func test_intValue_returnsCorrectValue () {
         XCTAssertEqual(SenecValue.float(1.2345).intValue!, 1)
         XCTAssertEqual(SenecValue.float(1.5432).intValue!, 2)
         XCTAssertEqual(SenecValue.float(-1.2345).intValue!, -1)
@@ -93,29 +93,29 @@ class SenecValueTests: XCTestCase {
 
 
 
-    func test_uintValue_returnsCorrectValue (){
+    func test_uintValue_returnsCorrectValue () {
         XCTAssertEqual(SenecValue.float(1.2345).uintValue!, 1)
         XCTAssertEqual(SenecValue.float(1.5432).uintValue!, 2)
-        XCTAssertEqual(SenecValue.float(-1.2345).uintValue, Optional<UInt>.none)
-        XCTAssertEqual(SenecValue.float(-1.5345).uintValue, Optional<UInt>.none)
+        XCTAssertEqual(SenecValue.float(-1.2345).uintValue, UInt?.none)
+        XCTAssertEqual(SenecValue.float(-1.5345).uintValue, UInt?.none)
         XCTAssertEqual(SenecValue.uint8(15).uintValue!, 15)
         XCTAssertEqual(SenecValue.uint16(12345).uintValue!, 12345)
         XCTAssertEqual(SenecValue.uint32(1_000_000).uintValue!, 1_000_000)
         XCTAssertEqual(SenecValue.uint64(1_000_000_000).uintValue!, 1_000_000_000)
-        XCTAssertEqual(SenecValue.int8(-15).uintValue, Optional<UInt>.none)
-        XCTAssertEqual(SenecValue.int16(-12345).uintValue, Optional<UInt>.none)
-        XCTAssertEqual(SenecValue.int32(-1_000_000).uintValue, Optional<UInt>.none)
-        XCTAssertEqual(SenecValue.int64(-1_000_000_000).uintValue, Optional<UInt>.none)
+        XCTAssertEqual(SenecValue.int8(-15).uintValue, UInt?.none)
+        XCTAssertEqual(SenecValue.int16(-12345).uintValue, UInt?.none)
+        XCTAssertEqual(SenecValue.int32(-1_000_000).uintValue, UInt?.none)
+        XCTAssertEqual(SenecValue.int64(-1_000_000_000).uintValue, UInt?.none)
     }
 
 
 
     // MARK: - Helper functions
     private func assertCorrectConstruction(with string: String,
-                                                  expected: SenecValue?,
-                                                  _ message: String = "",
-                                                  file: StaticString = #file,
-                                                  line: UInt = #line) {
+                                           expected: SenecValue?,
+                                           _ message: String = "",
+                                           file: StaticString = #file,
+                                           line: UInt = #line) {
         let value = SenecValue(string: string)
         XCTAssertEqual(expected, value, message, file: file, line: line)
     }
