@@ -34,6 +34,8 @@ class SenecValueTests: XCTestCase {
     func test_SenecValue_constructsCorrectValue_givenCorrectString () {
         // floating point
         assertCorrectConstruction(with: "fl_409DA112", expected: .float(4.925912013758661))
+        assertCorrectConstruction(with: "fl_00000000", expected: .float(0.0))
+        assertCorrectConstruction(with: "fl_80000000", expected: .float(-0.0))
 
         // unsigned ints
         assertCorrectConstruction(with: "u8_0c", expected: .uint8(12))

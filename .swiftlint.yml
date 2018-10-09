@@ -19,4 +19,5 @@ vertical_whitespace:
 
 excluded: # paths to ignore during linting.
 - Carthage
+- ValueConversion.playground
 

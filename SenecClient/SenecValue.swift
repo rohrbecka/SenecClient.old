@@ -13,7 +13,7 @@ import Foundation
 /// - Author:       André Rohrbeck
 /// - Copyright:    André Rohrbeck © 2018
 /// - Date:         2018-10-07
-internal enum SenecValue: Equatable {
+public enum SenecValue: Equatable {
 
     case float (_ value: Double)
     case uint8 (_ value: UInt8)
@@ -29,7 +29,7 @@ internal enum SenecValue: Equatable {
 
 
 
-    internal init?(string: String) {
+    public init?(string: String) {
         guard let type = SenecValueType(of: string) else {
             return nil
         }
@@ -75,7 +75,7 @@ internal enum SenecValue: Equatable {
 
 
     /// Returns the `Double` value represented by this `SenecValue`, converted as necessary.
-    internal var doubleValue: Double? {
+    public var doubleValue: Double? {
         switch self {
         case .float(let value):
             return value
@@ -101,7 +101,7 @@ internal enum SenecValue: Equatable {
     }
 
 
-    internal var intValue: Int? {
+    public var intValue: Int? {
         switch self {
         case .float(let value):
             return Int(value.rounded())
@@ -128,7 +128,7 @@ internal enum SenecValue: Equatable {
 
 
 
-    internal var uintValue: UInt? {
+    public var uintValue: UInt? {
         switch self {
         case .float(let value):
             if value < 0 { return nil }
@@ -167,6 +167,10 @@ private func hexToFloat(_ string: String) -> Double? {
         return nil
     }
 
+    if string == "00000000" || string == "80000000" {
+        return 0.0
+    }
+
     let sign = intValue & 0x8000_0000 != 0 ? -1.0 : 1.0
     let exponent = Double( ((intValue >> 23) & 0xff) - 127 )
     let mantissa = 1 + (Double (intValue & 0x7f_ffff) / Double (0x7f_ffff))
@@ -176,7 +180,7 @@ private func hexToFloat(_ string: String) -> Double? {
 
 
 
-fileprivate extension String {
+private extension String {
     /// Returns the string. If the string has a Senec-type prefix (something before a '_')
     /// the prefix including the underscore is removed.
     var senecPrefixRemoved: String {
