@@ -10,7 +10,7 @@ let unix = now.timeIntervalSince1970
 
 
 
-let GUI_BAT_DATA_POWER = SenecValue(string: "fl_C3FF68B3") // negative = discharging, positive = charging
+let GUI_BAT_DATA_POWER = SenecValue(string: "fl_41BE04C1") // negative = discharging, positive = charging
 let GUI_HOUSE_POW = SenecValue(string: "fl_43F59E76") // Hausverbrauch, always positive
 let GUI_GRID_POW = SenecValue(string: "fl_C19CA3D7") // negative = sending to grid, positive: getting from grid)
 let GUI_BAT_DATA_FUEL_CHARGE = SenecValue(string: "fl_4287A5E4") // Battery SoC
