@@ -27,7 +27,7 @@ class SenecEnergyStatisticTests: XCTestCase {
     }
 
 
-
+    // MARK: Codable Tests
     func testDecoding () {
         let jsonString = """
         {
@@ -88,10 +88,11 @@ class SenecEnergyStatisticTests: XCTestCase {
 
 
 
-private func decode<Report: Decodable>(_ type: Report.Type,
-                                       json: String,
-                                       file: StaticString = #file,
-                                       line: UInt = #line) -> Report? {
+// MARK: - Helpers
+internal func decode<D: Decodable>(_ type: D.Type,
+                                   json: String,
+                                   file: StaticString = #file,
+                                   line: UInt = #line) -> D? {
     guard let jsonData = json.data(using: .utf8) else {
         XCTFail("Error in the Test JSON data.", file: file, line: line)
         return nil

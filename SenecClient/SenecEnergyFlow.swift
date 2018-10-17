@@ -187,3 +187,41 @@ public struct SenecEnergyFlow {
         }
     }
 }
+
+
+
+extension SenecEnergyFlow: Codable {
+    public init (from decoder: Decoder) throws {
+        do {
+            let jsonFlow = try JSONEnergyFlow(from: decoder)
+
+            photovoltaicPowerGeneration =
+                SenecValue(string: jsonFlow.photovoltaicPowerGenerationString)?.doubleValue ?? 0.0
+            batteryPowerFlow = SenecValue(string: jsonFlow.batteryPowerFlowString)?.doubleValue ?? 0.0
+            gridPowerFlow = SenecValue(string: jsonFlow.gridPowerFlowString)?.doubleValue ?? 0.0
+            housePowerConsumption = SenecValue(string: jsonFlow.housePowerConsumptionString)?.doubleValue ?? 0.0
+            let socPercent = SenecValue(string: jsonFlow.batteryStateOfChargeString)?.doubleValue ?? 0.0
+            batteryStateOfCharge = socPercent / 100.0
+        }
+    }
+}
+
+
+
+private struct JSONEnergyFlow: Codable {
+    let photovoltaicPowerGenerationString: String
+    let batteryPowerFlowString: String
+    let gridPowerFlowString: String
+    let housePowerConsumptionString: String
+    let batteryStateOfChargeString: String
+
+
+
+    enum CodingKeys: String, CodingKey {
+        case photovoltaicPowerGenerationString = "GUI_INVERTER_POWER"
+        case batteryPowerFlowString = "GUI_BAT_DATA_POWER"
+        case gridPowerFlowString = "GUI_GRID_POW"
+        case housePowerConsumptionString = "GUI_HOUSE_POW"
+        case batteryStateOfChargeString = "GUI_BAT_DATA_FUEL_CHARGE"
+    }
+}

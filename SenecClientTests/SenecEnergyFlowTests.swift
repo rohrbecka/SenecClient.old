@@ -333,3 +333,37 @@ class SenecEnergyFlowTests: XCTestCase {
         XCTAssertEqual(sut.batteryToGridPower, 0.5)
     }
 }
+
+
+
+// MARK: - Codable Tests
+extension SenecEnergyFlowTests {
+    func testDecoding () {
+        let jsonString = """
+        {
+            "STAT_STATE": "u8_10",
+            "STAT_STATE_DECODE": "u8_10",
+            "GUI_BAT_DATA_POWER": "fl_C3FF68B3",
+            "GUI_INVERTER_POWER": "fl_80000000",
+            "GUI_HOUSE_POW": "fl_43F59E76",
+            "GUI_GRID_POW": "fl_C19CA3D7",
+            "STAT_MAINT_REQUIRED": "u8_00",
+            "GUI_BAT_DATA_FUEL_CHARGE": "fl_4287A5E4",
+            "GUI_CHARGING_INFO": "u8_00",
+            "GUI_BOOSTING_INFO": "u8_01"
+        }
+        """
+
+        guard let sut = decode (SenecEnergyFlow.self, json: jsonString) else {
+            XCTFail("JSON decoding failed."); return
+        }
+
+        XCTAssertEqual(sut.photovoltaicPowerGeneration, 0.000, accuracy: 0.001)
+        XCTAssertEqual(sut.batteryPowerFlow, -510.818, accuracy: 0.001)
+        XCTAssertEqual(sut.gridPowerFlow, -19.580, accuracy: 0.001)
+        XCTAssertEqual(sut.housePowerConsumption, 491.238, accuracy: 0.001)
+        XCTAssertEqual(sut.batteryStateOfCharge, 0.678, accuracy: 0.001)
+    }
+
+
+}
