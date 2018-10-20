@@ -30,6 +30,8 @@
 		7C6990BA2169FE5A0081D173 /* SenecValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6990B92169FE5A0081D173 /* SenecValueTests.swift */; };
 		7C6990BC2169FF370081D173 /* SenecValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6990BB2169FF370081D173 /* SenecValue.swift */; };
 		7CC4432C216D4BFA00EDDFCD /* SenecEnergyFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC4432B216D4BFA00EDDFCD /* SenecEnergyFlow.swift */; };
+		7CF8D6F2217A574C000B3C61 /* SenecSocketsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF8D6F1217A574C000B3C61 /* SenecSocketsTests.swift */; };
+		7CF8D6F4217A5A0F000B3C61 /* SenecSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF8D6F3217A5A0F000B3C61 /* SenecSockets.swift */; };
 		7CF91FFC21787EF400BF755D /* SenecSocketSettingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF91FFB21787EF400BF755D /* SenecSocketSettingTests.swift */; };
 		7CF91FFE21787F3200BF755D /* SenecSocketSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF91FFD21787F3100BF755D /* SenecSocketSetting.swift */; };
 /* End PBXBuildFile section */
@@ -74,6 +76,8 @@
 		7C6990B92169FE5A0081D173 /* SenecValueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecValueTests.swift; sourceTree = "<group>"; };
 		7C6990BB2169FF370081D173 /* SenecValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecValue.swift; sourceTree = "<group>"; };
 		7CC4432B216D4BFA00EDDFCD /* SenecEnergyFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecEnergyFlow.swift; sourceTree = "<group>"; };
+		7CF8D6F1217A574C000B3C61 /* SenecSocketsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecSocketsTests.swift; sourceTree = "<group>"; };
+		7CF8D6F3217A5A0F000B3C61 /* SenecSockets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecSockets.swift; sourceTree = "<group>"; };
 		7CF91FFB21787EF400BF755D /* SenecSocketSettingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecSocketSettingTests.swift; sourceTree = "<group>"; };
 		7CF91FFD21787F3100BF755D /* SenecSocketSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecSocketSetting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +133,7 @@
 				7CC4432B216D4BFA00EDDFCD /* SenecEnergyFlow.swift */,
 				7C11936E21752361003E61BC /* SenecEnergyStatistic.swift */,
 				7CF91FFD21787F3100BF755D /* SenecSocketSetting.swift */,
+				7CF8D6F3217A5A0F000B3C61 /* SenecSockets.swift */,
 			);
 			path = SenecClient;
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 				7C5C472E216BFF94004E9EA7 /* SenecEnergyFlowTests.swift */,
 				7C11936C2175231C003E61BC /* SenecEnergyStatisticTests.swift */,
 				7CF91FFB21787EF400BF755D /* SenecSocketSettingTests.swift */,
+				7CF8D6F1217A574C000B3C61 /* SenecSocketsTests.swift */,
 			);
 			path = SenecClientTests;
 			sourceTree = "<group>";
@@ -311,6 +317,7 @@
 				7C6990BC2169FF370081D173 /* SenecValue.swift in Sources */,
 				7CF91FFE21787F3200BF755D /* SenecSocketSetting.swift in Sources */,
 				7C11936F21752361003E61BC /* SenecEnergyStatistic.swift in Sources */,
+				7CF8D6F4217A5A0F000B3C61 /* SenecSockets.swift in Sources */,
 				7CC4432C216D4BFA00EDDFCD /* SenecEnergyFlow.swift in Sources */,
 				7C6990B82169F7170081D173 /* SenecValueType.swift in Sources */,
 			);
@@ -325,6 +332,7 @@
 				7C11936D2175231C003E61BC /* SenecEnergyStatisticTests.swift in Sources */,
 				7C6990902169526C0081D173 /* SenecClientTests.swift in Sources */,
 				7C5C472F216BFF94004E9EA7 /* SenecEnergyFlowTests.swift in Sources */,
+				7CF8D6F2217A574C000B3C61 /* SenecSocketsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

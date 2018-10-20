@@ -157,6 +157,16 @@ public enum SenecValue: Equatable {
             return nil
         }
     }
+
+
+
+    public var boolValue: Bool {
+        if doubleValue?.isZero ?? true {
+            return false
+        } else {
+            return true
+        }
+    }
 }
 
 

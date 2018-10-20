@@ -112,6 +112,30 @@ class SenecValueTests: XCTestCase {
 
 
 
+    func test_boolValue_returnsCorrectValue () {
+        XCTAssertEqual(SenecValue.float(1.2345).boolValue, true)
+        XCTAssertEqual(SenecValue.float(0.0).boolValue, false)
+        XCTAssertEqual(SenecValue.float(-0.0).boolValue, false)
+        XCTAssertEqual(SenecValue.float(-1.5345).boolValue, true)
+        XCTAssertEqual(SenecValue.uint8(1).boolValue, true)
+        XCTAssertEqual(SenecValue.uint8(0).boolValue, false)
+        XCTAssertEqual(SenecValue.uint16(1).boolValue, true)
+        XCTAssertEqual(SenecValue.uint16(0).boolValue, false)
+        XCTAssertEqual(SenecValue.uint32(1).boolValue, true)
+        XCTAssertEqual(SenecValue.uint32(0).boolValue, false)
+        XCTAssertEqual(SenecValue.uint64(1).boolValue, true)
+        XCTAssertEqual(SenecValue.uint64(0).boolValue, false)
+        XCTAssertEqual(SenecValue.int8(1).boolValue, true)
+        XCTAssertEqual(SenecValue.int8(0).boolValue, false)
+        XCTAssertEqual(SenecValue.int16(1).boolValue, true)
+        XCTAssertEqual(SenecValue.int16(0).boolValue, false)
+        XCTAssertEqual(SenecValue.int32(1).boolValue, true)
+        XCTAssertEqual(SenecValue.int32(0).boolValue, false)
+        XCTAssertEqual(SenecValue.int64(1).boolValue, true)
+        XCTAssertEqual(SenecValue.int64(0).boolValue, false)
+    }
+
+
     // MARK: - Helper functions
     private func assertCorrectConstruction(with string: String,
                                            expected: SenecValue?,

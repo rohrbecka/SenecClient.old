@@ -18,7 +18,7 @@ import Foundation
 /// - Author: André Rohrbeck
 /// - Copyright: André ©Rohrbeck @ 2018
 /// - Date: 2018-10-18
-public struct SenecSocketSetting {
+public struct SenecSocketSetting: Equatable {
 
     /// The mode in which a switchable socket in a Senec system is operated.
     public enum SocketMode {

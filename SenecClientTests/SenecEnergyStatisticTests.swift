@@ -97,9 +97,13 @@ internal func decode<D: Decodable>(_ type: D.Type,
         XCTFail("Error in the Test JSON data.", file: file, line: line)
         return nil
     }
-    guard let report = try? JSONDecoder().decode(type, from: jsonData) else {
+
+    do {
+        let report = try JSONDecoder().decode(type, from: jsonData)
+        return report
+    } catch let error {
+        print(error)
         XCTFail("Json decoding failed.", file: file, line: line)
         return nil
     }
-    return report
 }
