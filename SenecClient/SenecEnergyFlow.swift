@@ -196,11 +196,11 @@ extension SenecEnergyFlow: Codable {
             let jsonFlow = try JSONEnergyFlow(from: decoder)
 
             photovoltaicPowerGeneration =
-                SenecValue(string: jsonFlow.photovoltaicPowerGenerationString)?.doubleValue ?? 0.0
-            batteryPowerFlow = SenecValue(string: jsonFlow.batteryPowerFlowString)?.doubleValue ?? 0.0
-            gridPowerFlow = SenecValue(string: jsonFlow.gridPowerFlowString)?.doubleValue ?? 0.0
-            housePowerConsumption = SenecValue(string: jsonFlow.housePowerConsumptionString)?.doubleValue ?? 0.0
-            let socPercent = SenecValue(string: jsonFlow.batteryStateOfChargeString)?.doubleValue ?? 0.0
+                (SenecValue(string: jsonFlow.values.photovoltaicPowerGenerationString)?.doubleValue ?? 0.0) * 1000.0
+            batteryPowerFlow = SenecValue(string: jsonFlow.values.batteryPowerFlowString)?.doubleValue ?? 0.0
+            gridPowerFlow = SenecValue(string: jsonFlow.values.gridPowerFlowString)?.doubleValue ?? 0.0
+            housePowerConsumption = SenecValue(string: jsonFlow.values.housePowerConsumptionString)?.doubleValue ?? 0.0
+            let socPercent = SenecValue(string: jsonFlow.values.batteryStateOfChargeString)?.doubleValue ?? 0.0
             batteryStateOfCharge = socPercent / 100.0
         }
     }
@@ -209,6 +209,16 @@ extension SenecEnergyFlow: Codable {
 
 
 private struct JSONEnergyFlow: Codable {
+    let values: JSONEnergyFlowValues
+
+    enum CodingKeys: String, CodingKey {
+        case values = "ENERGY"
+    }
+}
+
+
+
+private struct JSONEnergyFlowValues: Codable {
     let photovoltaicPowerGenerationString: String
     let batteryPowerFlowString: String
     let gridPowerFlowString: String

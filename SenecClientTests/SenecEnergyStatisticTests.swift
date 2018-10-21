@@ -31,6 +31,8 @@ class SenecEnergyStatisticTests: XCTestCase {
     func testDecoding () {
         let jsonString = """
         {
+        "STATISTIC":
+        {
         "STAT_DAY_E_HOUSE": "fl_41BE04C1",
         "STAT_DAY_E_PV": "fl_41F41699",
         "STAT_DAY_BAT_CHARGE": "fl_40F706C7",
@@ -70,6 +72,7 @@ class SenecEnergyStatisticTests: XCTestCase {
             "u6_0000000000000000",
             "u6_0000000000000000"
         ]
+        }
         }
         """
 

@@ -64,12 +64,12 @@ public struct SenecEnergyStatistic: Codable {
         do {
             let jsonStatistic = try JSONEnergyStatistic(from: decoder)
 
-            photovoltaicEnergy = SenecValue(string: jsonStatistic.photovoltaicEnergyString)?.doubleValue ?? 0.0
-            houseConsumption = SenecValue(string: jsonStatistic.houseConsumptionString)?.doubleValue ?? 0.0
-            batteryCharge = SenecValue(string: jsonStatistic.batteryChargeString)?.doubleValue ?? 0.0
-            batteryDischarge = SenecValue(string: jsonStatistic.batteryDischargeString)?.doubleValue ?? 0.0
-            gridImport = SenecValue(string: jsonStatistic.gridImportString)?.doubleValue ?? 0.0
-            gridExport = SenecValue(string: jsonStatistic.gridExportString)?.doubleValue ?? 0.0
+            photovoltaicEnergy = SenecValue(string: jsonStatistic.values.photovoltaicEnergyString)?.doubleValue ?? 0.0
+            houseConsumption = SenecValue(string: jsonStatistic.values.houseConsumptionString)?.doubleValue ?? 0.0
+            batteryCharge = SenecValue(string: jsonStatistic.values.batteryChargeString)?.doubleValue ?? 0.0
+            batteryDischarge = SenecValue(string: jsonStatistic.values.batteryDischargeString)?.doubleValue ?? 0.0
+            gridImport = SenecValue(string: jsonStatistic.values.gridImportString)?.doubleValue ?? 0.0
+            gridExport = SenecValue(string: jsonStatistic.values.gridExportString)?.doubleValue ?? 0.0
         } catch {
             throw error
         }
@@ -80,7 +80,16 @@ public struct SenecEnergyStatistic: Codable {
 
 // MARK: - Inner Type for decoding / encoding
 private struct JSONEnergyStatistic: Codable {
+    let values: JSONEnergyStatisticValues
 
+    enum CodingKeys: String, CodingKey {
+        case values = "STATISTIC"
+    }
+}
+
+
+
+private struct JSONEnergyStatisticValues: Codable {
     let photovoltaicEnergyString: String
     let houseConsumptionString: String
     let batteryChargeString: String
