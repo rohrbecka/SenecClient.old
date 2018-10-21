@@ -208,17 +208,30 @@ extension SenecEnergyFlow: Codable {
 
 
 
-private struct JSONEnergyFlow: Codable {
-    let values: JSONEnergyFlowValues
+internal struct JSONEnergyFlow: Codable, Equatable {
+    fileprivate let values: JSONEnergyFlowValues
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case values = "ENERGY"
+    }
+
+
+    /// Default Initializer
+    ///
+    /// This initializes a completely empty JSON. All fields are there, but
+    /// they are filled with empty strings.
+    public init() {
+        values = JSONEnergyFlowValues (photovoltaicPowerGenerationString: "",
+                                       batteryPowerFlowString: "",
+                                       gridPowerFlowString: "",
+                                       housePowerConsumptionString: "",
+                                       batteryStateOfChargeString: "")
     }
 }
 
 
 
-private struct JSONEnergyFlowValues: Codable {
+private struct JSONEnergyFlowValues: Codable, Equatable {
     let photovoltaicPowerGenerationString: String
     let batteryPowerFlowString: String
     let gridPowerFlowString: String

@@ -79,17 +79,26 @@ public struct SenecEnergyStatistic: Codable {
 
 
 // MARK: - Inner Type for decoding / encoding
-private struct JSONEnergyStatistic: Codable {
-    let values: JSONEnergyStatisticValues
+internal struct JSONEnergyStatistic: Codable, Equatable {
+    fileprivate let values: JSONEnergyStatisticValues
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case values = "STATISTIC"
+    }
+
+    public init() {
+        values = JSONEnergyStatisticValues(photovoltaicEnergyString: "",
+                                           houseConsumptionString: "",
+                                           batteryChargeString: "",
+                                           batteryDischargeString: "",
+                                           gridImportString: "",
+                                           gridExportString: "")
     }
 }
 
 
 
-private struct JSONEnergyStatisticValues: Codable {
+private struct JSONEnergyStatisticValues: Codable, Equatable {
     let photovoltaicEnergyString: String
     let houseConsumptionString: String
     let batteryChargeString: String

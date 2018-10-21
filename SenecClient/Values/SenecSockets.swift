@@ -20,7 +20,7 @@ public struct SenecSockets: Decodable {
 
 
     public init(from decoder: Decoder) throws {
-        let jsonEnergy = try JSONEnergyInformation(from: decoder)
+        let jsonEnergy = try JSONSocketsInformation(from: decoder)
         let jsonSockets = jsonEnergy.socketSettings
 
         let socket0Settings: SenecSocketSetting = {
@@ -96,17 +96,36 @@ public struct SenecSockets: Decodable {
 
 
 
-private struct JSONEnergyInformation: Codable {
+internal struct JSONSocketsInformation: Codable, Equatable {
 
-    let socketSettings: JSONSenecSocketSettings
+    fileprivate let socketSettings: JSONSenecSocketSettings
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case socketSettings = "ENERGY"
+    }
+
+    public init() {
+        socketSettings = JSONSenecSocketSettings (socket0ForcedOnString: "",
+                                                  socket0AutomaticOnString: "",
+                                                  socket0MinPowerString: "",
+                                                  socket0MinTimeString: "",
+                                                  socket0OnTimeString: "",
+                                                  socket0MaxTimeString: "",
+                                                  socket0StatusOnString: "",
+                                                  socket0TimeRemainingString: "",
+                                                  socket1ForcedOnString: "",
+                                                  socket1AutomaticOnString: "",
+                                                  socket1MinPowerString: "",
+                                                  socket1MinTimeString: "",
+                                                  socket1OnTimeString: "",
+                                                  socket1MaxTimeString: "",
+                                                  socket1StatusOnString: "",
+                                                  socket1TimeRemainingString: "")
     }
 }
 
 
-private struct JSONSenecSocketSettings: Codable {
+private struct JSONSenecSocketSettings: Codable, Equatable {
     let socket0ForcedOnString: String
     let socket0AutomaticOnString: String
     let socket0MinPowerString: String
