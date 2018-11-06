@@ -71,7 +71,6 @@
 /* Begin PBXFileReference section */
 		7C11936C2175231C003E61BC /* SenecEnergyStatisticTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecEnergyStatisticTests.swift; sourceTree = "<group>"; };
 		7C11936E21752361003E61BC /* SenecEnergyStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecEnergyStatistic.swift; sourceTree = "<group>"; };
-		7C17E9A3217E465E00E69ACF /* ViewPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ViewPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7C5C472C216BFE12004E9EA7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		7C5C472D216BFE4F004E9EA7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		7C5C472E216BFF94004E9EA7 /* SenecEnergyFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecEnergyFlowTests.swift; sourceTree = "<group>"; };
@@ -153,7 +152,6 @@
 		7C6990772169526C0081D173 = {
 			isa = PBXGroup;
 			children = (
-				7C17E9A3217E465E00E69ACF /* ViewPlayground.playground */,
 				7CFD8481217BB6990024BDEE /* CommunicationPlayground.playground */,
 				7C6990B62169DBBA0081D173 /* ValueConversion.playground */,
 				7C5C472C216BFE12004E9EA7 /* .swiftlint.yml */,
