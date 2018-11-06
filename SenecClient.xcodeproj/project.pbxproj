@@ -29,6 +29,17 @@
 		7C6990B82169F7170081D173 /* SenecValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6990B72169F7170081D173 /* SenecValueType.swift */; };
 		7C6990BA2169FE5A0081D173 /* SenecValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6990B92169FE5A0081D173 /* SenecValueTests.swift */; };
 		7C6990BC2169FF370081D173 /* SenecValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6990BB2169FF370081D173 /* SenecValue.swift */; };
+		7CB6CCDC217E57590003584F /* SenecClient_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB6CCD3217E57590003584F /* SenecClient_iOS.framework */; };
+		7CB6CCE1217E57590003584F /* SenecClient_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB6CCE0217E57590003584F /* SenecClient_iOSTests.swift */; };
+		7CB6CCE3217E57590003584F /* SenecClient_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CB6CCD5217E57590003584F /* SenecClient_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CB6CCEA217E576E0003584F /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC75351217CB4E500026F54 /* Requestable.swift */; };
+		7CB6CCEB217E576E0003584F /* SenecCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC75355217CB7AF00026F54 /* SenecCommunication.swift */; };
+		7CB6CCEC217E576E0003584F /* SenecValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6990B72169F7170081D173 /* SenecValueType.swift */; };
+		7CB6CCED217E576E0003584F /* SenecValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6990BB2169FF370081D173 /* SenecValue.swift */; };
+		7CB6CCEE217E576E0003584F /* SenecEnergyFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC4432B216D4BFA00EDDFCD /* SenecEnergyFlow.swift */; };
+		7CB6CCEF217E576E0003584F /* SenecEnergyStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C11936E21752361003E61BC /* SenecEnergyStatistic.swift */; };
+		7CB6CCF0217E576E0003584F /* SenecSocketSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF91FFD21787F3100BF755D /* SenecSocketSetting.swift */; };
+		7CB6CCF1217E576E0003584F /* SenecSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF8D6F3217A5A0F000B3C61 /* SenecSockets.swift */; };
 		7CC4432C216D4BFA00EDDFCD /* SenecEnergyFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC4432B216D4BFA00EDDFCD /* SenecEnergyFlow.swift */; };
 		7CC7534E217CB43100026F54 /* RequestableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC7534D217CB43100026F54 /* RequestableTests.swift */; };
 		7CC75352217CB4E500026F54 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC75351217CB4E500026F54 /* Requestable.swift */; };
@@ -48,11 +59,19 @@
 			remoteGlobalIDString = 7C6990802169526C0081D173;
 			remoteInfo = SenecClient;
 		};
+		7CB6CCDD217E57590003584F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7C6990782169526C0081D173 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CB6CCD2217E57590003584F;
+			remoteInfo = "SenecClient iOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		7C11936C2175231C003E61BC /* SenecEnergyStatisticTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecEnergyStatisticTests.swift; sourceTree = "<group>"; };
 		7C11936E21752361003E61BC /* SenecEnergyStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecEnergyStatistic.swift; sourceTree = "<group>"; };
+		7C17E9A3217E465E00E69ACF /* ViewPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ViewPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7C5C472C216BFE12004E9EA7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		7C5C472D216BFE4F004E9EA7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		7C5C472E216BFF94004E9EA7 /* SenecEnergyFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecEnergyFlowTests.swift; sourceTree = "<group>"; };
@@ -79,6 +98,12 @@
 		7C6990B72169F7170081D173 /* SenecValueType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecValueType.swift; sourceTree = "<group>"; };
 		7C6990B92169FE5A0081D173 /* SenecValueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecValueTests.swift; sourceTree = "<group>"; };
 		7C6990BB2169FF370081D173 /* SenecValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecValue.swift; sourceTree = "<group>"; };
+		7CB6CCD3217E57590003584F /* SenecClient_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SenecClient_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CB6CCD5217E57590003584F /* SenecClient_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SenecClient_iOS.h; sourceTree = "<group>"; };
+		7CB6CCD6217E57590003584F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CB6CCDB217E57590003584F /* SenecClient iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SenecClient iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CB6CCE0217E57590003584F /* SenecClient_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecClient_iOSTests.swift; sourceTree = "<group>"; };
+		7CB6CCE2217E57590003584F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CC4432B216D4BFA00EDDFCD /* SenecEnergyFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenecEnergyFlow.swift; sourceTree = "<group>"; };
 		7CC7534D217CB43100026F54 /* RequestableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestableTests.swift; sourceTree = "<group>"; };
 		7CC75351217CB4E500026F54 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
@@ -107,12 +132,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7CB6CCD0217E57590003584F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CB6CCD8217E57590003584F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CB6CCDC217E57590003584F /* SenecClient_iOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		7C6990772169526C0081D173 = {
 			isa = PBXGroup;
 			children = (
+				7C17E9A3217E465E00E69ACF /* ViewPlayground.playground */,
 				7CFD8481217BB6990024BDEE /* CommunicationPlayground.playground */,
 				7C6990B62169DBBA0081D173 /* ValueConversion.playground */,
 				7C5C472C216BFE12004E9EA7 /* .swiftlint.yml */,
@@ -120,6 +161,8 @@
 				7C69909C2169530B0081D173 /* README.md */,
 				7C6990832169526C0081D173 /* SenecClient */,
 				7C69908E2169526C0081D173 /* SenecClientTests */,
+				7CB6CCD4217E57590003584F /* SenecClient iOS */,
+				7CB6CCDF217E57590003584F /* SenecClient iOSTests */,
 				7C6990822169526C0081D173 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -129,6 +172,8 @@
 			children = (
 				7C6990812169526C0081D173 /* SenecClient.framework */,
 				7C69908A2169526C0081D173 /* SenecClientTests.xctest */,
+				7CB6CCD3217E57590003584F /* SenecClient_iOS.framework */,
+				7CB6CCDB217E57590003584F /* SenecClient iOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -172,6 +217,24 @@
 				7C6990B4216964F60081D173 /* Senec_HTTP_header.png */,
 			);
 			path = SenecWebserviceExamples;
+			sourceTree = "<group>";
+		};
+		7CB6CCD4217E57590003584F /* SenecClient iOS */ = {
+			isa = PBXGroup;
+			children = (
+				7CB6CCD5217E57590003584F /* SenecClient_iOS.h */,
+				7CB6CCD6217E57590003584F /* Info.plist */,
+			);
+			path = "SenecClient iOS";
+			sourceTree = "<group>";
+		};
+		7CB6CCDF217E57590003584F /* SenecClient iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				7CB6CCE0217E57590003584F /* SenecClient_iOSTests.swift */,
+				7CB6CCE2217E57590003584F /* Info.plist */,
+			);
+			path = "SenecClient iOSTests";
 			sourceTree = "<group>";
 		};
 		7CC7534F217CB4B300026F54 /* Values */ = {
@@ -229,6 +292,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7CB6CCCE217E57590003584F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CB6CCE3217E57590003584F /* SenecClient_iOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -269,6 +340,42 @@
 			productReference = 7C69908A2169526C0081D173 /* SenecClientTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		7CB6CCD2217E57590003584F /* SenecClient iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CB6CCE4217E57590003584F /* Build configuration list for PBXNativeTarget "SenecClient iOS" */;
+			buildPhases = (
+				7CB6CCCE217E57590003584F /* Headers */,
+				7CB6CCCF217E57590003584F /* Sources */,
+				7CB6CCD0217E57590003584F /* Frameworks */,
+				7CB6CCD1217E57590003584F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SenecClient iOS";
+			productName = "SenecClient iOS";
+			productReference = 7CB6CCD3217E57590003584F /* SenecClient_iOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7CB6CCDA217E57590003584F /* SenecClient iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CB6CCE7217E57590003584F /* Build configuration list for PBXNativeTarget "SenecClient iOSTests" */;
+			buildPhases = (
+				7CB6CCD7217E57590003584F /* Sources */,
+				7CB6CCD8217E57590003584F /* Frameworks */,
+				7CB6CCD9217E57590003584F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7CB6CCDE217E57590003584F /* PBXTargetDependency */,
+			);
+			name = "SenecClient iOSTests";
+			productName = "SenecClient iOSTests";
+			productReference = 7CB6CCDB217E57590003584F /* SenecClient iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -276,13 +383,19 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1000;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1010;
 				TargetAttributes = {
 					7C6990802169526C0081D173 = {
 						CreatedOnToolsVersion = 10.0;
 						LastSwiftMigration = 1000;
 					};
 					7C6990892169526C0081D173 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					7CB6CCD2217E57590003584F = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					7CB6CCDA217E57590003584F = {
 						CreatedOnToolsVersion = 10.0;
 					};
 				};
@@ -301,6 +414,8 @@
 			targets = (
 				7C6990802169526C0081D173 /* SenecClient */,
 				7C6990892169526C0081D173 /* SenecClientTests */,
+				7CB6CCD2217E57590003584F /* SenecClient iOS */,
+				7CB6CCDA217E57590003584F /* SenecClient iOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -330,6 +445,20 @@
 				7C6990A12169536B0081D173 /* lala_statistic_energy_example1.json in Resources */,
 				7C6990AB21695AC90081D173 /* lala_energy_info.json in Resources */,
 				7C6990B121695BCB0081D173 /* Senec_Information.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CB6CCD1217E57590003584F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CB6CCD9217E57590003584F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +515,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7CB6CCCF217E57590003584F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CB6CCEC217E576E0003584F /* SenecValueType.swift in Sources */,
+				7CB6CCF0217E576E0003584F /* SenecSocketSetting.swift in Sources */,
+				7CB6CCEF217E576E0003584F /* SenecEnergyStatistic.swift in Sources */,
+				7CB6CCEA217E576E0003584F /* Requestable.swift in Sources */,
+				7CB6CCED217E576E0003584F /* SenecValue.swift in Sources */,
+				7CB6CCEB217E576E0003584F /* SenecCommunication.swift in Sources */,
+				7CB6CCEE217E576E0003584F /* SenecEnergyFlow.swift in Sources */,
+				7CB6CCF1217E576E0003584F /* SenecSockets.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CB6CCD7217E57590003584F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CB6CCE1217E57590003584F /* SenecClient_iOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -393,6 +545,11 @@
 			isa = PBXTargetDependency;
 			target = 7C6990802169526C0081D173 /* SenecClient */;
 			targetProxy = 7C69908C2169526C0081D173 /* PBXContainerItemProxy */;
+		};
+		7CB6CCDE217E57590003584F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7CB6CCD2217E57590003584F /* SenecClient iOS */;
+			targetProxy = 7CB6CCDD217E57590003584F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -613,6 +770,102 @@
 			};
 			name = Release;
 		};
+		7CB6CCE5217E57590003584F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "SenecClient iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "de.rohrbeck-online.SenecClient-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7CB6CCE6217E57590003584F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "SenecClient iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "de.rohrbeck-online.SenecClient-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7CB6CCE8217E57590003584F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "SenecClient iOSTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "de.rohrbeck-online.SenecClient-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7CB6CCE9217E57590003584F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "SenecClient iOSTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "de.rohrbeck-online.SenecClient-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -639,6 +892,24 @@
 			buildConfigurations = (
 				7C6990992169526C0081D173 /* Debug */,
 				7C69909A2169526C0081D173 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CB6CCE4217E57590003584F /* Build configuration list for PBXNativeTarget "SenecClient iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CB6CCE5217E57590003584F /* Debug */,
+				7CB6CCE6217E57590003584F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CB6CCE7217E57590003584F /* Build configuration list for PBXNativeTarget "SenecClient iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CB6CCE8217E57590003584F /* Debug */,
+				7CB6CCE9217E57590003584F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
