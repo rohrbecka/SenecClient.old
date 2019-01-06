@@ -13,17 +13,25 @@ import XCTest
 class SenecSocketsTests: XCTestCase {
 
     var autoSocketSetting: SenecSocketSetting = {
-        let trigger = SenecSocketSetting.AutomaticSocketModeTrigger (minTime: 10, minPower: 11, onTime: 12, maxTime: 13)
+        let autoTrigger = SenecSocketSetting.AutomaticSocketModeTrigger (minTime: 10,
+                                                                         lowerPowerLimit: 11,
+                                                                         upperPowerLimit: 12,
+                                                                         onTime: 13)
+        let timeTrigger = SenecSocketSetting.TimeTrigger(hour: 10, minutes: 20)
         let status = SenecSocketSetting.SocketStatus(powerOn: true, timeRemaining: 10)
-        return SenecSocketSetting(mode: .automatic, trigger: trigger, status: status)
+        return SenecSocketSetting(mode: .automatic, autoTrigger: autoTrigger, timeTrigger: timeTrigger, status: status)
     }()
 //
 //    var forceSocketSetting =
 
     var offSocketSetting: SenecSocketSetting = {
-		let trigger = SenecSocketSetting.AutomaticSocketModeTrigger (minTime: 10, minPower: 11, onTime: 12, maxTime: 13)
+		let autoTrigger = SenecSocketSetting.AutomaticSocketModeTrigger (minTime: 10,
+                                                                     lowerPowerLimit: 11,
+                                                                     upperPowerLimit: 12,
+                                                                     onTime: 13)
+        let timeTrigger = SenecSocketSetting.TimeTrigger(hour: 12, minutes: 30)
         let status = SenecSocketSetting.SocketStatus(powerOn: false, timeRemaining: 0)
-        return SenecSocketSetting(mode: .off, trigger: trigger, status: status)
+        return SenecSocketSetting(mode: .off, autoTrigger: autoTrigger, timeTrigger: timeTrigger, status: status)
     }()
 
 
@@ -44,26 +52,66 @@ class SenecSocketsTests: XCTestCase {
 
 
 
-    func testJSONDeserialization () {
+    func testJSONDeserialization_Automatic () {
         let jsonString = """
         {
             "ENERGY": {
-                "GUI_POW_SOCK_0_FORCE_ON": "u8_00",
-                "GUI_POW_SOCK_0_ENABLE": "u8_01",
-                "GUI_SOCK_0_DATA_MIN_POW": "u1_09C4",
-                "GUI_SOCK_0_DATA_MIN_TIME": "u1_0002",
-                "GUI_SOCK_0_DATA_ON_TIME": "u1_003C",
-                "GUI_SOCK_0_DATA_MAX_TIME": "u1_0000",
-                "GUI_POW_SOCK_0_POW_ON": "u8_00",
-                "GUI_POW_SOCK_0_TIME_REM": "u1_0000",
-                "GUI_POW_SOCK_1_FORCE_ON": "u8_00",
-                "GUI_POW_SOCK_1_ENABLE": "u8_00",
-                "GUI_SOCK_1_DATA_MIN_POW": "u1_0000",
-                "GUI_SOCK_1_DATA_MIN_TIME": "u1_0000",
-                "GUI_SOCK_1_DATA_ON_TIME": "u1_0000",
-                "GUI_SOCK_1_DATA_MAX_TIME": "u1_0000",
-                "GUI_POW_SOCK_1_POW_ON": "u8_01",
-                "GUI_POW_SOCK_1_TIME_REM": "u1_0010",
+                "ZERO_EXPORT": "u8_00"
+            },
+            "SOCKETS": {
+                "ENABLE": [
+                    "u8_01",
+                    "u8_00"
+                ],
+                "USE_TIME": [
+                    "u8_00",
+                    "u8_00"
+                ],
+                "FORCE_ON": [
+                    "u8_00",
+                    "u8_00"
+                ],
+                "TIME_REM": [
+                    "u1_0064",
+                    "u1_0032"
+                ],
+                "POWER_ON": [
+                    "u8_01",
+                    "u8_00"
+                ],
+                "UPPER_LIMIT": [
+                    "u1_09C4",
+                    "u1_0100"
+                ],
+                "LOWER_LIMIT": [
+                    "u1_09C4",
+                    "u1_0200"
+                ],
+                "TIME_LIMIT": [
+                    "u1_0002",
+                    "u1_0004"
+                ],
+                "POWER_ON_TIME": [
+                    "u1_003C",
+                    "u1_001E"
+                ],
+                "PRIORITY": [
+                    "u8_00",
+                    "u8_00"
+                ],
+                "SWITCH_ON_HOUR": [
+                    "u8_00",
+                    "u8_00"
+                ],
+                "SWITCH_ON_MINUTE": [
+                    "u8_00",
+                    "u8_00"
+                ],
+                "NUMBER_OF_SOCKETS": "u8_02",
+                "ALREADY_SWITCHED": [
+                    "u8_00",
+                    "u8_00"
+                ]
             }
         }
         """
@@ -71,20 +119,26 @@ class SenecSocketsTests: XCTestCase {
         let sut = decode (SenecSockets.self, json: jsonString)
 
         let expectedTrigger0 = SenecSocketSetting.AutomaticSocketModeTrigger(minTime: 2,
-                                                                             minPower: 2500,
-                                                                             onTime: 60,
-                                                                             maxTime: 0)
-        let expectedStatus0 = SenecSocketSetting.SocketStatus(powerOn: false, timeRemaining: 0)
+                                                                             lowerPowerLimit: 2500,
+                                                                             upperPowerLimit: 2500,
+                                                                             onTime: 60)
+        let expectedTimeTrigger0 = SenecSocketSetting.TimeTrigger(hour: 0, minutes: 0)
+        let expectedStatus0 = SenecSocketSetting.SocketStatus(powerOn: true, timeRemaining: 100)
         let expectedSettings0 = SenecSocketSetting (mode: .automatic,
-                                                    trigger: expectedTrigger0,
+                                                    autoTrigger: expectedTrigger0,
+                                                    timeTrigger: expectedTimeTrigger0,
                                                     status: expectedStatus0)
 
-        let expectedTrigger1 = SenecSocketSetting.AutomaticSocketModeTrigger(minTime: 0,
-                                                                             minPower: 0,
-                                                                             onTime: 0,
-                                                                             maxTime: 0)
-        let expectedStatus1 = SenecSocketSetting.SocketStatus(powerOn: true, timeRemaining: 16)
-        let expectedSettings1 = SenecSocketSetting(mode: .off, trigger: expectedTrigger1, status: expectedStatus1)
+        let expectedTrigger1 = SenecSocketSetting.AutomaticSocketModeTrigger(minTime: 4,
+                                                                             lowerPowerLimit: 512,
+                                                                             upperPowerLimit: 256,
+                                                                             onTime: 30)
+        let expectedTimeTrigger1 = SenecSocketSetting.TimeTrigger(hour: 0, minutes: 0)
+        let expectedStatus1 = SenecSocketSetting.SocketStatus(powerOn: false, timeRemaining: 50)
+        let expectedSettings1 = SenecSocketSetting(mode: .off,
+                                                   autoTrigger: expectedTrigger1,
+                                                   timeTrigger: expectedTimeTrigger1,
+                                                   status: expectedStatus1)
 
         XCTAssertEqual(sut![0], expectedSettings0)
         XCTAssertEqual(sut![1], expectedSettings1)

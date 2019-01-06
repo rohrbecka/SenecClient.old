@@ -9,5 +9,5 @@ import XCTest
 @testable import SenecClient_iOS
 
 class SenecClient_iOSTests: XCTestCase {
-    
+
 }

@@ -11,63 +11,100 @@ import XCTest
 class SenecSocketSettingTests: XCTestCase {
 
     func testConstructor () {
-        let trigger = SenecSocketSetting.AutomaticSocketModeTrigger(minTime: 10,
-                                                                    minPower: 20,
-                                                                    onTime: 30,
-                                                                    maxTime: 40)
+        let autoTrigger = SenecSocketSetting.AutomaticSocketModeTrigger(minTime: 10,
+                                                                        lowerPowerLimit: 20,
+                                                                        upperPowerLimit: 30,
+                                                                        onTime: 40)
+        let timeTrigger = SenecSocketSetting.TimeTrigger(hour: 12, minutes: 0)
         let status = SenecSocketSetting.SocketStatus(powerOn: true,
                                                      timeRemaining: 100)
         let forcedSut = SenecSocketSetting(mode: .forced,
-                                           trigger: trigger,
+                                           autoTrigger: autoTrigger,
+                                           timeTrigger: timeTrigger,
                                            status: status)
 
 
-        let expectedTrigger = trigger
+        let expectedAutoTrigger = autoTrigger
+        let expectedTimeTrigger = timeTrigger
         let expectedStatus = status
         XCTAssertEqual(forcedSut.mode, .forced)
-        XCTAssertEqual(forcedSut.trigger, expectedTrigger)
+        XCTAssertEqual(forcedSut.autoTrigger, expectedAutoTrigger)
+        XCTAssertEqual(forcedSut.timeTrigger, expectedTimeTrigger)
         XCTAssertEqual(forcedSut.status, expectedStatus)
     }
 
 
 
     func testConstructor1 () {
-        let trigger = SenecSocketSetting.AutomaticSocketModeTrigger(minTime: 100,
-                                                                    minPower: 200,
-                                                                    onTime: 300,
-                                                                    maxTime: 400)
+        let autoTrigger = SenecSocketSetting.AutomaticSocketModeTrigger(minTime: 100,
+                                                                        lowerPowerLimit: 200,
+                                                                        upperPowerLimit: 300,
+                                                                        onTime: 400)
+        let timeTrigger = SenecSocketSetting.TimeTrigger(hour: 20, minutes: 15)
         let status = SenecSocketSetting.SocketStatus(powerOn: false,
                                                      timeRemaining: 0)
         let automaticSut = SenecSocketSetting(mode: .automatic,
-                                              trigger: trigger,
+                                              autoTrigger: autoTrigger,
+                                              timeTrigger: timeTrigger,
                                               status: status)
 
 
-        let expectedTrigger = trigger
+        let expectedAutoTrigger = autoTrigger
+        let expectedTimeTrigger = timeTrigger
         let expectedStatus = status
         XCTAssertEqual(automaticSut.mode, .automatic)
-        XCTAssertEqual(automaticSut.trigger, expectedTrigger)
+        XCTAssertEqual(automaticSut.autoTrigger, expectedAutoTrigger)
+        XCTAssertEqual(automaticSut.timeTrigger, expectedTimeTrigger)
         XCTAssertEqual(automaticSut.status, expectedStatus)
     }
 
 
 
     func testConstructor2 () {
-        let trigger = SenecSocketSetting.AutomaticSocketModeTrigger(minTime: 1,
-                                                                    minPower: 2,
-                                                                    onTime: 3,
-                                                                    maxTime: 4)
+        let autoTrigger = SenecSocketSetting.AutomaticSocketModeTrigger(minTime: 2,
+                                                                        lowerPowerLimit: 4,
+                                                                        upperPowerLimit: 6,
+                                                                        onTime: 8)
+        let timeTrigger = SenecSocketSetting.TimeTrigger(hour: 1, minutes: 45)
+        let status = SenecSocketSetting.SocketStatus(powerOn: true,
+                                                     timeRemaining: 1)
+        let timeSut = SenecSocketSetting(mode: .time,
+                                         autoTrigger: autoTrigger,
+                                         timeTrigger: timeTrigger,
+                                         status: status)
+
+
+        let expectedAutoTrigger = autoTrigger
+        let expectedTimeTrigger = timeTrigger
+        let expectedStatus = status
+        XCTAssertEqual(timeSut.mode, .time)
+        XCTAssertEqual(timeSut.autoTrigger, expectedAutoTrigger)
+        XCTAssertEqual(timeSut.timeTrigger, expectedTimeTrigger)
+        XCTAssertEqual(timeSut.status, expectedStatus)
+    }
+
+
+
+    func testConstructor3 () {
+        let autoTrigger = SenecSocketSetting.AutomaticSocketModeTrigger(minTime: 1,
+                                                                        lowerPowerLimit: 2,
+                                                                        upperPowerLimit: 3,
+                                                                        onTime: 4)
+        let timeTrigger = SenecSocketSetting.TimeTrigger(hour: 6, minutes: 30)
         let status = SenecSocketSetting.SocketStatus(powerOn: true,
                                                      timeRemaining: 1)
         let offSut = SenecSocketSetting(mode: .off,
-                                              trigger: trigger,
+                                              autoTrigger: autoTrigger,
+                                              timeTrigger: timeTrigger,
                                               status: status)
 
 
-        let expectedTrigger = trigger
+        let expectedAutoTrigger = autoTrigger
+        let expectedTimeTrigger = timeTrigger
         let expectedStatus = status
         XCTAssertEqual(offSut.mode, .off)
-        XCTAssertEqual(offSut.trigger, expectedTrigger)
+        XCTAssertEqual(offSut.autoTrigger, expectedAutoTrigger)
+        XCTAssertEqual(offSut.timeTrigger, expectedTimeTrigger)
         XCTAssertEqual(offSut.status, expectedStatus)
     }
 
@@ -75,21 +112,44 @@ class SenecSocketSettingTests: XCTestCase {
 
     // MARK: - AutomaticSocketModeTrigger
     func testTriggerConstructor () {
-        let trigger = SenecSocketSetting.AutomaticSocketModeTrigger(minTime: 1, minPower: 2, onTime: 3, maxTime: 4)
+        let trigger = SenecSocketSetting.AutomaticSocketModeTrigger(minTime: 1,
+                                                                    lowerPowerLimit: 2,
+                                                                    upperPowerLimit: 3,
+                                                                    onTime: 4)
         XCTAssertEqual(trigger.minTime, 1)
-        XCTAssertEqual(trigger.maxTime, 4)
-        XCTAssertEqual(trigger.minPower, 2)
-        XCTAssertEqual(trigger.onTime, 3)
+        XCTAssertEqual(trigger.lowerPowerLimit, 2)
+        XCTAssertEqual(trigger.upperPowerLimit, 3)
+        XCTAssertEqual(trigger.onTime, 4)
     }
 
 
 
     func testTriggerConstructor1 () {
-        let trigger = SenecSocketSetting.AutomaticSocketModeTrigger(minTime: 10, minPower: 20, onTime: 30, maxTime: 40)
+        let trigger = SenecSocketSetting.AutomaticSocketModeTrigger(minTime: 10,
+                                                                    lowerPowerLimit: 20,
+                                                                    upperPowerLimit: 30,
+                                                                    onTime: 40)
         XCTAssertEqual(trigger.minTime, 10)
-        XCTAssertEqual(trigger.maxTime, 40)
-        XCTAssertEqual(trigger.minPower, 20)
-        XCTAssertEqual(trigger.onTime, 30)
+        XCTAssertEqual(trigger.lowerPowerLimit, 20)
+        XCTAssertEqual(trigger.upperPowerLimit, 30)
+        XCTAssertEqual(trigger.onTime, 40)
+    }
+
+
+
+    // MARK: - TimeTrigger
+    func testTimeTriggerConstructor () {
+        let trigger = SenecSocketSetting.TimeTrigger(hour: 1, minutes: 2)
+        XCTAssertEqual(trigger.hour, 1)
+        XCTAssertEqual(trigger.minutes, 2)
+    }
+
+
+
+    func testTimeTriggerConstructor2 () {
+        let trigger = SenecSocketSetting.TimeTrigger(hour: 3, minutes: 4)
+        XCTAssertEqual(trigger.hour, 3)
+        XCTAssertEqual(trigger.minutes, 4)
     }
 
 

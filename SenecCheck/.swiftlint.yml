@@ -1,0 +1,12 @@
+disabled_rules:
+
+opt_in_rules:
+- empty_count
+- explicit_acl
+
+vertical_whitespace:
+  max_empty_lines: 3
+
+excluded: # paths to ignore during linting.
+- Carthage
+

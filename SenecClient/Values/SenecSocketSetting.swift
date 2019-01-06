@@ -26,6 +26,8 @@ public struct SenecSocketSetting: Equatable {
         case forced
         /// The socket is triggered by the available photovoltaic power.
         case automatic
+        /// The socket is activated at a certain time every day.
+        case time
         /// The socket is not active.
         case off
     }
@@ -40,13 +42,21 @@ public struct SenecSocketSetting: Equatable {
         public let minTime: Int // TODO: add unit information
 
         /// The minimum power, which ha to be surpassed for `minTime` for the socket to be activated.
-        public let minPower: Int    // TODO: add unit information
+        public let lowerPowerLimit: Int    // TODO: add unit information
+
+        // TODO: add docoumentation according to "mein-senec"-website (not readable on mobile)
+        public let upperPowerLimit: Int
 
         /// The time for which the socket remains activated after its activation.
         public let onTime: Int
+    }
 
-        // TODO: add docoumentation according to "mein-senec"-website (not readable on mobile)
-        public let maxTime: Int
+
+
+    public struct TimeTrigger: Equatable {
+        public let hour: Int
+
+        public let minutes: Int
     }
 
 
@@ -66,7 +76,10 @@ public struct SenecSocketSetting: Equatable {
     public let mode: SocketMode
 
     /// The trigger parameters, which are used, if the mode is `.automatic`.
-    public let trigger: AutomaticSocketModeTrigger
+    public let autoTrigger: AutomaticSocketModeTrigger
+
+    /// The trigger parameters, which are used, if the mode is `.time`.
+    public let timeTrigger: TimeTrigger
 
     /// The current status of the socket.
     public let status: SocketStatus

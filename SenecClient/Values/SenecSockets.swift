@@ -9,7 +9,7 @@ import Foundation
 
 public struct SenecSockets: Decodable {
 
-    private let socketSettings: [SenecSocketSetting]
+    public let socketSettings: [SenecSocketSetting]
 
 
 
@@ -23,68 +23,60 @@ public struct SenecSockets: Decodable {
         let jsonEnergy = try JSONSocketsInformation(from: decoder)
         let jsonSockets = jsonEnergy.socketSettings
 
-        let socket0Settings: SenecSocketSetting = {
-            let trigger: SenecSocketSetting.AutomaticSocketModeTrigger = {
-                let minTime = SenecValue(string: jsonSockets.socket0MinTimeString)?.intValue ?? 0
-                let minPower = SenecValue(string: jsonSockets.socket0MinPowerString)?.intValue ?? 0
-                let onTime = SenecValue(string: jsonSockets.socket0OnTimeString)?.intValue ?? 0
-                let maxTime = SenecValue(string: jsonSockets.socket0MaxTimeString)?.intValue ?? 0
-                return SenecSocketSetting.AutomaticSocketModeTrigger(minTime: minTime,
-                                                                     minPower: minPower,
-                                                                     onTime: onTime,
-                                                                     maxTime: maxTime)
-            }()
-            let status: SenecSocketSetting.SocketStatus = {
-                let powerOn = SenecValue(string: jsonSockets.socket0StatusOnString)?.boolValue ?? false
-                let timeRemaining = SenecValue(string: jsonSockets.socket0TimeRemainingString)?.intValue ?? 0
-                return SenecSocketSetting.SocketStatus(powerOn: powerOn, timeRemaining: timeRemaining)
-            }()
+        let numberOfSockets = SenecValue(string: jsonSockets.numberOfSocketsString)?.intValue ?? 0
 
-            let mode: SenecSocketSetting.SocketMode = {
-                let forced = SenecValue(string: jsonSockets.socket0ForcedOnString)?.boolValue ?? false
-                let auto = SenecValue(string: jsonSockets.socket0AutomaticOnString)?.boolValue ?? false
-                if !forced && !auto {
-                    return .off
-                } else if forced {
-                    return .forced
-                } else {
-                    return .automatic
-                }
-            }()
-            return SenecSocketSetting(mode: mode, trigger: trigger, status: status)
-        }()
+        var settings = [SenecSocketSetting]()
+        for index in 0..<numberOfSockets {
 
-        let socket1Settings: SenecSocketSetting = {
-            let trigger: SenecSocketSetting.AutomaticSocketModeTrigger = {
-                let minTime = SenecValue(string: jsonSockets.socket1MinTimeString)?.intValue ?? 0
-                let minPower = SenecValue(string: jsonSockets.socket1MinPowerString)?.intValue ?? 0
-                let onTime = SenecValue(string: jsonSockets.socket1OnTimeString)?.intValue ?? 0
-                let maxTime = SenecValue(string: jsonSockets.socket1MaxTimeString)?.intValue ?? 0
-                return SenecSocketSetting.AutomaticSocketModeTrigger(minTime: minTime,
-                                                                     minPower: minPower,
-                                                                     onTime: onTime,
-                                                                     maxTime: maxTime)
-            }()
-            let status: SenecSocketSetting.SocketStatus = {
-                let powerOn = SenecValue(string: jsonSockets.socket1StatusOnString)?.boolValue ?? false
-                let timeRemaining = SenecValue(string: jsonSockets.socket1TimeRemainingString)?.intValue ?? 0
-                return SenecSocketSetting.SocketStatus(powerOn: powerOn, timeRemaining: timeRemaining)
-            }()
+            let socketSettings: SenecSocketSetting = {
+                let autoTrigger: SenecSocketSetting.AutomaticSocketModeTrigger = {
+                    let minTime = SenecValue(string: jsonSockets.minTimeStrings[index])?.intValue ?? 0
+                    let lowerPowerLimit = SenecValue(string: jsonSockets.lowerPowerLimitStrings[index])?.intValue ?? 0
+                    let upperPowerLimit = SenecValue(string: jsonSockets.upperPowerLimitStrings[index])?.intValue ?? 0
+                    let onTime = SenecValue(string: jsonSockets.onTimeStrings[index])?.intValue ?? 0
+                    return SenecSocketSetting.AutomaticSocketModeTrigger(minTime: minTime,
+                                                                         lowerPowerLimit: lowerPowerLimit,
+                                                                         upperPowerLimit: upperPowerLimit,
+                                                                         onTime: onTime)
+                }()
 
-            let mode: SenecSocketSetting.SocketMode = {
-                let forced = SenecValue(string: jsonSockets.socket1ForcedOnString)?.boolValue ?? false
-                let auto = SenecValue(string: jsonSockets.socket1AutomaticOnString)?.boolValue ?? false
-                if !forced && !auto {
-                    return .off
-                } else if forced {
-                    return .forced
-                } else {
-                    return .automatic
-                }
+                let timeTrigger: SenecSocketSetting.TimeTrigger = {
+                    let hour = SenecValue(string: jsonSockets.hourStrings[index])?.intValue ?? 0
+                    let minutes = SenecValue(string: jsonSockets.minuteStrings[index])?.intValue ?? 0
+                    return SenecSocketSetting.TimeTrigger(hour: hour, minutes: minutes)
+                }()
+
+                let status: SenecSocketSetting.SocketStatus = {
+                    let powerOn = SenecValue(string: jsonSockets.statusOnStrings[index])?.boolValue ?? false
+                    let timeRemaining = SenecValue(string: jsonSockets.timeRemainingStrings[index])?.intValue ?? 0
+                    return SenecSocketSetting.SocketStatus(powerOn: powerOn, timeRemaining: timeRemaining)
+                }()
+
+                let mode: SenecSocketSetting.SocketMode = {
+                    let forced = SenecValue(string: jsonSockets.forcedOnStrings[index])?.boolValue ?? false
+                    let auto = SenecValue(string: jsonSockets.automaticOnStrings[index])?.boolValue ?? false
+                    let time = SenecValue(string: jsonSockets.useTimeStrings[index])?.boolValue ?? false
+
+                    if !forced && !auto && !time {
+                        return .off
+                    } else if forced {
+                        return .forced
+                    } else if time {
+                        return .time
+                    } else {
+                        return .automatic
+                    }
+                }()
+
+                return SenecSocketSetting(mode: mode,
+                                          autoTrigger: autoTrigger,
+                                          timeTrigger: timeTrigger,
+                                          status: status)
             }()
-            return SenecSocketSetting(mode: mode, trigger: trigger, status: status)
-        }()
-        self.init(settings: [socket0Settings, socket1Settings])
+            settings.append(socketSettings)
+        }
+
+        self.init(settings: settings)
     }
 
 
@@ -101,66 +93,52 @@ internal struct JSONSocketsInformation: Codable, Equatable {
     fileprivate let socketSettings: JSONSenecSocketSettings
 
     private enum CodingKeys: String, CodingKey {
-        case socketSettings = "ENERGY"
+        case socketSettings = "SOCKETS"
     }
 
     public init() {
-        socketSettings = JSONSenecSocketSettings (socket0ForcedOnString: "",
-                                                  socket0AutomaticOnString: "",
-                                                  socket0MinPowerString: "",
-                                                  socket0MinTimeString: "",
-                                                  socket0OnTimeString: "",
-                                                  socket0MaxTimeString: "",
-                                                  socket0StatusOnString: "",
-                                                  socket0TimeRemainingString: "",
-                                                  socket1ForcedOnString: "",
-                                                  socket1AutomaticOnString: "",
-                                                  socket1MinPowerString: "",
-                                                  socket1MinTimeString: "",
-                                                  socket1OnTimeString: "",
-                                                  socket1MaxTimeString: "",
-                                                  socket1StatusOnString: "",
-                                                  socket1TimeRemainingString: "")
+        socketSettings = JSONSenecSocketSettings (numberOfSocketsString: "",
+                                                  forcedOnStrings: [String](),
+                                                  useTimeStrings: [String](),
+                                                  automaticOnStrings: [String](),
+                                                  upperPowerLimitStrings: [String](),
+                                                  lowerPowerLimitStrings: [String](),
+                                                  minTimeStrings: [String](),
+                                                  onTimeStrings: [String](),
+                                                  statusOnStrings: [String](),
+                                                  timeRemainingStrings: [String](),
+                                                  hourStrings: [String](),
+                                                  minuteStrings: [String]())
     }
 }
 
 
 private struct JSONSenecSocketSettings: Codable, Equatable {
-    let socket0ForcedOnString: String
-    let socket0AutomaticOnString: String
-    let socket0MinPowerString: String
-    let socket0MinTimeString: String
-    let socket0OnTimeString: String
-    let socket0MaxTimeString: String
-    let socket0StatusOnString: String
-    let socket0TimeRemainingString: String
-
-    let socket1ForcedOnString: String
-    let socket1AutomaticOnString: String
-    let socket1MinPowerString: String
-    let socket1MinTimeString: String
-    let socket1OnTimeString: String
-    let socket1MaxTimeString: String
-    let socket1StatusOnString: String
-    let socket1TimeRemainingString: String
+    let numberOfSocketsString: String
+    let forcedOnStrings: [String]
+    let useTimeStrings: [String]
+    let automaticOnStrings: [String]
+    let upperPowerLimitStrings: [String]
+    let lowerPowerLimitStrings: [String]
+    let minTimeStrings: [String]
+    let onTimeStrings: [String]
+    let statusOnStrings: [String]
+    let timeRemainingStrings: [String]
+    let hourStrings: [String]
+    let minuteStrings: [String]
 
     enum CodingKeys: String, CodingKey {
-        case socket0ForcedOnString = "GUI_POW_SOCK_0_FORCE_ON"
-        case socket0AutomaticOnString = "GUI_POW_SOCK_0_ENABLE"
-        case socket0MinPowerString = "GUI_SOCK_0_DATA_MIN_POW"
-        case socket0MinTimeString = "GUI_SOCK_0_DATA_MIN_TIME"
-        case socket0OnTimeString = "GUI_SOCK_0_DATA_ON_TIME"
-        case socket0MaxTimeString = "GUI_SOCK_0_DATA_MAX_TIME"
-        case socket0StatusOnString = "GUI_POW_SOCK_0_POW_ON"
-        case socket0TimeRemainingString = "GUI_POW_SOCK_0_TIME_REM"
-
-        case socket1ForcedOnString = "GUI_POW_SOCK_1_FORCE_ON"
-        case socket1AutomaticOnString = "GUI_POW_SOCK_1_ENABLE"
-        case socket1MinPowerString = "GUI_SOCK_1_DATA_MIN_POW"
-        case socket1MinTimeString = "GUI_SOCK_1_DATA_MIN_TIME"
-        case socket1OnTimeString = "GUI_SOCK_1_DATA_ON_TIME"
-        case socket1MaxTimeString = "GUI_SOCK_1_DATA_MAX_TIME"
-        case socket1StatusOnString = "GUI_POW_SOCK_1_POW_ON"
-        case socket1TimeRemainingString = "GUI_POW_SOCK_1_TIME_REM"
+        case numberOfSocketsString = "NUMBER_OF_SOCKETS"
+        case forcedOnStrings = "FORCE_ON"
+        case useTimeStrings = "USE_TIME"
+        case automaticOnStrings = "ENABLE"
+        case upperPowerLimitStrings = "UPPER_LIMIT"
+        case lowerPowerLimitStrings = "LOWER_LIMIT"
+        case minTimeStrings = "TIME_LIMIT"
+        case onTimeStrings = "POWER_ON_TIME"
+        case statusOnStrings = "POWER_ON"
+        case timeRemainingStrings = "TIME_REM"
+        case hourStrings = "SWITCH_ON_HOUR"
+        case minuteStrings = "SWITCH_ON_MINUTE"
     }
 }

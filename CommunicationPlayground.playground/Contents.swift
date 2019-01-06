@@ -41,3 +41,7 @@ private let socketstask = session.dataTask(with: SenecSockets.request(url: scrip
     }
 }
 socketstask.resume()
+
+
+
+let host = LocalSenec

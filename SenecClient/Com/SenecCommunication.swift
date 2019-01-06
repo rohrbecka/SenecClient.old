@@ -27,7 +27,16 @@ extension SenecEnergyStatistic: Requestable {
 
 extension SenecSockets: Requestable {
     public static func request(url: URL) -> URLRequest {
-        return senecRequest(url: url, content: JSONSocketsInformation())
+        /// Workaround as the request contains empty strings but the (properly decodable) reply
+        /// contains Arrays. The arrays prevent the simple use of JsonEncoder"
+        return senecRequest(url: url, string:"{\"ENERGY\":{\"ZERO_EXPORT\":\"\"},"
+            + "\"SOCKETS\":{\"ENABLE\":\"\",\"USE_TIME\":\"\",\"FORCE_ON\":\"\",\"TIME_REM\":\"\",\"POWER_ON\":\"\","
+            + "\"UPPER_LIMIT\":\"\",\"LOWER_LIMIT\":\"\",\"TIME_LIMIT\":\"\",\"POWER_ON_TIME\":\"\",\"PRIORITY\":\"\","
+            + "\"SWITCH_ON_HOUR\":\"\",\"SWITCH_ON_MINUTE\":\"\",\"NUMBER_OF_SOCKETS\":\"\",\"ALREADY_SWITCHED\":\"\""
+            + "}}")
+
+        // End of workaround. The next return is not used at the moment:
+        // return senecRequest(url: url, content: JSONSocketsInformation())
     }
 }
 
@@ -41,17 +50,32 @@ extension SenecSockets: Requestable {
 /// - Parameter url:     The URL from which to request the information
 /// - Parameter content: The Senec Value, which serves as request.
 private func senecRequest<T: Encodable>(url: URL, content: T) -> URLRequest {
+    do {
+        let data = try JSONEncoder().encode(content)
+        return senecRequest(url: url, data: data)
+    } catch let error {
+        preconditionFailure("JSON encoding problem: " + error.localizedDescription)
+    }
+}
+
+
+
+private func senecRequest(url: URL, data: Data) -> URLRequest {
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
     request.addValue("application/json", forHTTPHeaderField: "Accept")
     request.addValue("application/x-www-form-urlencoded; charset=UTF-8", forHTTPHeaderField: "Content")
 
-    do {
-        let data = try JSONEncoder().encode(content)
-        request.httpBody = data
-        return request
-    } catch let error {
-        preconditionFailure("JSON encoding problem: " + error.localizedDescription)
-    }
+    request.httpBody = data
+
     return request
+}
+
+
+
+private func senecRequest(url: URL, string: String) -> URLRequest {
+    guard let data = string.data(using: .utf8) else {
+        preconditionFailure("String not convertible using UTF-8.")
+    }
+    return senecRequest(url: url, data: data)
 }
