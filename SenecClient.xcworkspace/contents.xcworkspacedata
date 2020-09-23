@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SenecCheck/SenecCheck.xcodeproj">
+      location = "group:../SenecCheck/SenecCheck.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:../SenecUI/SenecUI.xcodeproj">

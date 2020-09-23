@@ -17,6 +17,8 @@ public class LocalSenecHost: SenecHost {
 
     public var socketRequestHandler: RequestHandler<SenecSockets>
 
+    public var statisticRequestHandler: RequestHandler<SenecEnergyStatistic>
+
     public var gettingEnergyFlow: Bool = false
 
     public var gettingEnergyFlowStopped: Bool = false
@@ -32,8 +34,10 @@ public class LocalSenecHost: SenecHost {
         session = URLSession(configuration: .default)
         energyRequestHandler = RequestHandler<SenecEnergyFlow>()
         socketRequestHandler = RequestHandler<SenecSockets>()
+        statisticRequestHandler = RequestHandler<SenecEnergyStatistic>()
         energyRequestHandler.request = getEnergyFlow
         socketRequestHandler.request = getSocketSetting
+        statisticRequestHandler.request = getEnergyStatistic
     }
 
 
@@ -61,12 +65,25 @@ public class LocalSenecHost: SenecHost {
         }
         task.resume()
     }
+
+
+
+    public func getEnergyStatistic(completion: @escaping Completion<SenecEnergyStatistic>) {
+        let cgiURL = host.appendingPathComponent("lala.cgi")
+        let request = SenecEnergyStatistic.request(url: cgiURL)
+        let task = session.task(with: request) { result in
+            DispatchQueue.main.async {
+                completion(result.decode())
+            }
+        }
+        task.resume()
+    }
 }
 
 
 
-extension URLSession {
-    public func task(with request: URLRequest, completionHandler: @escaping Completion<Data> ) -> URLSessionDataTask {
+public extension URLSession {
+    func task(with request: URLRequest, completionHandler: @escaping Completion<Data> ) -> URLSessionDataTask {
         let task = dataTask(with: request) {data, response, error in
             guard let data = data else {
                 if let error = error {

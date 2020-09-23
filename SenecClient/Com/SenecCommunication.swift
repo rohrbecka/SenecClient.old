@@ -29,7 +29,7 @@ extension SenecSockets: Requestable {
     public static func request(url: URL) -> URLRequest {
         /// Workaround as the request contains empty strings but the (properly decodable) reply
         /// contains Arrays. The arrays prevent the simple use of JsonEncoder"
-        return senecRequest(url: url, string:"{\"ENERGY\":{\"ZERO_EXPORT\":\"\"},"
+        return senecRequest(url: url, string: "{\"ENERGY\":{\"ZERO_EXPORT\":\"\"},"
             + "\"SOCKETS\":{\"ENABLE\":\"\",\"USE_TIME\":\"\",\"FORCE_ON\":\"\",\"TIME_REM\":\"\",\"POWER_ON\":\"\","
             + "\"UPPER_LIMIT\":\"\",\"LOWER_LIMIT\":\"\",\"TIME_LIMIT\":\"\",\"POWER_ON_TIME\":\"\",\"PRIORITY\":\"\","
             + "\"SWITCH_ON_HOUR\":\"\",\"SWITCH_ON_MINUTE\":\"\",\"NUMBER_OF_SOCKETS\":\"\",\"ALREADY_SWITCHED\":\"\""

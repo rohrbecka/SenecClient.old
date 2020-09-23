@@ -37,6 +37,7 @@ public protocol SenecHost: AnyObject {
 
     var energyRequestHandler: RequestHandler<SenecEnergyFlow> { get set }
     var socketRequestHandler: RequestHandler<SenecSockets> { get set }
+    var statisticRequestHandler: RequestHandler<SenecEnergyStatistic> { get set }
 
 //    var gettingEnergyFlow: Bool {get set}
 //
@@ -55,31 +56,44 @@ public protocol SenecHost: AnyObject {
 
 
 
-    func getSocketSetting(completion: @escaping Completion<SenecSockets>) -> Void
+    func getSocketSetting(completion: @escaping Completion<SenecSockets>)
 }
 
 
 
-extension SenecHost {
-    public func startGettingEnergyFlow(every seconds: Double, completion: @escaping Completion<SenecEnergyFlow>) {
-        energyRequestHandler.startRequest(every: 5.0, completion: completion)
+public extension SenecHost {
+    func startGettingEnergyFlow(every seconds: Double, completion: @escaping Completion<SenecEnergyFlow>) {
+        energyRequestHandler.startRequest(every: seconds, completion: completion)
     }
 
 
 
-    public func stopGettingEnergyFlow() {
+    func stopGettingEnergyFlow() {
         energyRequestHandler.stopRequest()
     }
 
 
 
-    public func startGettingSocketSettings(every seconds: Double, completion: @escaping Completion<SenecSockets>) {
+    func startGettingSocketSettings(every seconds: Double, completion: @escaping Completion<SenecSockets>) {
         socketRequestHandler.startRequest(every: seconds, completion: completion)
     }
 
 
-    public func stopGettingSocketSettings() {
+
+    func stopGettingSocketSettings() {
         socketRequestHandler.stopRequest()
+    }
+
+
+
+    func startGettingEnergyStatistic(every seconds: Double, completion: @escaping Completion<SenecEnergyStatistic>) {
+        statisticRequestHandler.startRequest(every: seconds, completion: completion)
+    }
+
+
+
+    func stopGettingEnergyStatistic() {
+        statisticRequestHandler.stopRequest()
     }
 }
 
@@ -91,12 +105,12 @@ public final class RequestHandler<T> {
     public var request: Request<T>?
 
     /// Whether the request is currently executed or not.
-    var requesting = false
+    private var requesting = false
 
     /// Whether the request is cancelled.
     ///
     /// If the request is cancelled, the request isn't executed anymore.
-    var requestCancelled = false
+    private var requestCancelled = false
 
 
 
@@ -115,7 +129,7 @@ public final class RequestHandler<T> {
                 if myself.requestCancelled {
                     myself.requesting = false
                 } else {
-                    DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + seconds){[weak self] in
+                    DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + seconds) {[weak self] in
                         self?.startRequest(every: seconds, completion: completion)
                     }
                 }

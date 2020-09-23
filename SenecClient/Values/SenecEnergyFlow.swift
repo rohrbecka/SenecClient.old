@@ -196,7 +196,7 @@ extension SenecEnergyFlow: Codable {
             let jsonFlow = try JSONEnergyFlow(from: decoder)
 
             photovoltaicPowerGeneration =
-                (SenecValue(string: jsonFlow.values.photovoltaicPowerGenerationString)?.doubleValue ?? 0.0) * 1000.0
+                (SenecValue(string: jsonFlow.values.photovoltaicPowerGenerationString)?.doubleValue ?? 0.0) // 1000.0
             batteryPowerFlow = SenecValue(string: jsonFlow.values.batteryPowerFlowString)?.doubleValue ?? 0.0
             gridPowerFlow = SenecValue(string: jsonFlow.values.gridPowerFlowString)?.doubleValue ?? 0.0
             housePowerConsumption = SenecValue(string: jsonFlow.values.housePowerConsumptionString)?.doubleValue ?? 0.0
